@@ -71,9 +71,8 @@ export default function Index() {
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1A1A1A]/95 backdrop-blur-sm border-b border-[#C9A84C]/20">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <span className="font-cormorant text-2xl font-bold text-[#C9A84C] tracking-widest uppercase">Gold</span>
-            <span className="font-cormorant text-2xl font-light text-white tracking-widest uppercase ml-1">Line</span>
+          <div className="flex items-center">
+            <span className="font-cormorant text-2xl font-bold text-[#C9A84C] tracking-widest uppercase">Gold Line</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
             {[["services", "Услуги"], ["tariffs", "Тарифы"], ["order", "Заказать"]].map(([id, label]) => (
@@ -114,7 +113,7 @@ export default function Index() {
 
             <h1 className="font-cormorant text-5xl md:text-7xl font-bold leading-tight mb-4 animate-fade-in opacity-0" style={{ animationDelay: "0.3s" }}>
               Такси
-              <span className="block text-[#C9A84C]">Gold Line</span>
+              <span className="block text-[#C9A84C]">Gold&nbsp;Line</span>
             </h1>
 
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-8 max-w-lg animate-fade-in opacity-0" style={{ animationDelay: "0.5s" }}>
@@ -369,9 +368,8 @@ export default function Index() {
       {/* FOOTER */}
       <footer className="bg-[#1A1A1A] border-t border-white/5 py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-1">
-            <span className="font-cormorant text-xl font-bold text-[#C9A84C] tracking-widest uppercase">Gold</span>
-            <span className="font-cormorant text-xl font-light text-white tracking-widest uppercase ml-1">Line</span>
+          <div className="flex items-center">
+            <span className="font-cormorant text-xl font-bold text-[#C9A84C] tracking-widest uppercase">Gold Line</span>
           </div>
           <p className="text-gray-500 text-xs">© 2026 Gold Line. Такси по городу и межгороду.</p>
           <a href="tel:+70000000000" className="text-[#C9A84C] text-sm font-medium hover:text-[#E8C96A] transition-colors">
