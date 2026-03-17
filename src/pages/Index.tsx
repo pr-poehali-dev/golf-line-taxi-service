@@ -69,15 +69,33 @@ const tariffs = [
   },
 ];
 
+const SEND_ORDER_URL = "https://functions.poehali.dev/93be18a1-bc6d-425d-ae3a-348d91da9c06";
+
 export default function Index() {
   const [form, setForm] = useState({ name: "", phone: "", from: "", to: "", date: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [openService, setOpenService] = useState<number | null>(null);
   const [showTariffs, setShowTariffs] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch(SEND_ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Ошибка сервера");
+      setSubmitted(true);
+    } catch {
+      setError("Не удалось отправить заявку. Позвоните нам по телефону.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -492,11 +510,23 @@ export default function Index() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-red-400 text-xs text-center bg-red-400/10 border border-red-400/20 px-4 py-2">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-[#C9A84C] hover:bg-[#E8C96A] text-[#1A1A1A] font-semibold py-4 text-sm tracking-wider uppercase transition-all duration-200 hover:shadow-lg hover:shadow-[#C9A84C]/20 mt-2"
+                    disabled={sending}
+                    className="w-full bg-[#C9A84C] hover:bg-[#E8C96A] disabled:opacity-60 disabled:cursor-not-allowed text-[#1A1A1A] font-semibold py-4 text-sm tracking-wider uppercase transition-all duration-200 hover:shadow-lg hover:shadow-[#C9A84C]/20 mt-2 flex items-center justify-center gap-2"
                   >
-                    Отправить заявку
+                    {sending ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-[#1A1A1A]/30 border-t-[#1A1A1A] rounded-full animate-spin" />
+                        Отправка...
+                      </>
+                    ) : "Отправить заявку"}
                   </button>
 
                   <p className="text-gray-500 text-xs text-center">
