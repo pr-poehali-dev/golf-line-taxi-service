@@ -187,13 +187,22 @@ export default function Index() {
               Заказать
             </button>
           </div>
-          <a
-            href="tel:+79895489189"
-            className="flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C96A] text-[#1A1A1A] font-semibold text-sm px-4 py-2 transition-colors duration-200"
-          >
-            <Icon name="Phone" size={14} />
-            <span>+7 (989) 548-91-89</span>
-          </a>
+          <div className="flex flex-col items-end gap-0.5">
+            <a
+              href="tel:+79895489189"
+              className="flex items-center gap-2 bg-[#C9A84C] hover:bg-[#E8C96A] text-[#1A1A1A] font-semibold text-sm px-4 py-1.5 transition-colors duration-200"
+            >
+              <Icon name="Phone" size={13} />
+              <span>+7 (989) 548-91-89</span>
+            </a>
+            <a
+              href="tel:+79094283646"
+              className="flex items-center gap-2 bg-[#C9A84C]/80 hover:bg-[#C9A84C] text-[#1A1A1A] font-semibold text-sm px-4 py-1.5 transition-colors duration-200"
+            >
+              <Icon name="Phone" size={13} />
+              <span>+7 (909) 428-36-46</span>
+            </a>
+          </div>
         </div>
       </nav>
 
